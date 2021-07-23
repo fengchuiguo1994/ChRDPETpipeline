@@ -39,6 +39,16 @@ bash run.coverage.sh
 bash run.interaction.sh
 ```
 
+Output files
+============
+```
+*.DNA.fastq # the DNA reads
+*.RNA.fastq # the RNA reads
+*.DNA.bam # the DNA reads align result
+*.RNA.bam # the RNA reads align result
+*.bw # visualization in IGV 
+*.DNARNA.givenanchor.FDRfiltered.txt # interaction. visualization in IGV 
+```
 
 My tools version
 ============
@@ -48,3 +58,5 @@ samtools(1.9)       bowtie2(2.3.5.1)    hisat2(2.1.0)       bwa(0.7.15-r1140)
 flash(v1.2.11)      cutadapt(2.3)       bedtools(v2.27.1)   deeptools(3.2.1)
 HTSeq(0.11.2)
 ```
+
+contact me: huang182@live.cn/huangxingyu@webmail.hzau.edu.cn/1182768992@qq.com
