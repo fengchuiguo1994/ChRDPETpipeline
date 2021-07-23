@@ -20,6 +20,7 @@ HTSeq
 
 Building index
 ==============
+```
 bwa index genome.fa
 python hisat2-2.1.0/extract_splice_sites.py genome.gtf > genome.ss
 python hisat2-2.1.0/extract_exons.py genome.gtf > genome.exon
@@ -27,6 +28,7 @@ hisat2-build -p 8 --ss genome.ss --exon genome.exon genome.fa genome
 bowtie2-build --threads 8 genome.fa genome
 perl -F"\t" -lane 'if($F[2] eq "gene"){$gene=$1 if($F[8]=~/gene_id "(.+?)";/);$type="coding";$name=$gene;print "$F[0]\t".($F[3]-1)."\t$F[4]\t$name\t0\t$F[6]\t$gene\t$type"}' genome.gtf > genome.info
 grep -v ">" genome.fa | perl -lane '{$_=~s/[Nn]+//g;$sum+=length($_);}END{print $sum;}' # genome length
+```
 
 Usage of ChRDPETpipline
 ```
