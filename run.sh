@@ -6,8 +6,8 @@ HISAT_GENOME_INDEX='genome/genome'
 BOWTIE2_GENOME_INDEX='genome/genome'
 knownspl='genome/genome.ss'
 Linker_file='linker/adapter.fa'
-IN1='trim/allrich-40_R1.fq.gz'
-IN2='trim/allrich-40_R2.fq.gz'
+IN1='allrich-40_R1.fq.gz'
+IN2='allrich-40_R2.fq.gz'
 
 
 NTHREADS='20' ### number of threads used in mapping reads to a reference genome
