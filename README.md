@@ -32,6 +32,7 @@ grep -v ">" genome.fa | perl -lane '{$_=~s/[Nn]+//g;$sum+=length($_);}END{print 
 ```
 
 Usage of ChRDPETpipline
+=======================
 ```
 bash run.sh
 bash run.coverage.sh
