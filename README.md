@@ -36,6 +36,7 @@ Usage of ChRDPETpipline
 ```
 bash run.sh
 bash run.coverage.sh
+bash run.interaction.sh
 ```
 
 
