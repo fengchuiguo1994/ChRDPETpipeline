@@ -3,20 +3,20 @@ Process ChRD-PET data
 
 REQUIREMENTS
 ============
-java8
-python
-perl
-R
+- java8
+- python
+- perl
+- R
 
-samtools
-bowtie2
-hisat2
-bwa
-[flash](http://ccb.jhu.edu/software/FLASH/)
-cutadapt
-bedtools
-deeptools
-HTSeq
+- samtools
+- bowtie2
+- hisat2
+- bwa
+- [flash](http://ccb.jhu.edu/software/FLASH/)
+- cutadapt
+- bedtools
+- deeptools
+- HTSeq
 
 Building index
 ==============
@@ -39,17 +39,17 @@ bash run.coverage.sh
 
 My tools version
 ============
-java8(1.8.0_161)
-python(3.7.9)
-perl(v5.26.2)
-R(3.5.2)
+- java8(1.8.0_161)
+- python(3.7.9)
+- perl(v5.26.2)
+- R(3.5.2)
 
-samtools(1.9)
-bowtie2(2.3.5.1)
-hisat2(2.1.0)
-bwa(0.7.15-r1140)
-flash(v1.2.11)
-cutadapt(2.3)
-bedtools(v2.27.1)
-deeptools(3.2.1)
-HTSeq(0.11.2)
+- samtools(1.9)
+- bowtie2(2.3.5.1)
+- hisat2(2.1.0)
+- bwa(0.7.15-r1140)
+- flash(v1.2.11)
+- cutadapt(2.3)
+- bedtools(v2.27.1)
+- deeptools(3.2.1)
+- HTSeq(0.11.2)
