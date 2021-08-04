@@ -1,6 +1,16 @@
 # ChRDPETpipeline
-Processing ChRD-PET data <br/>
-The pipeline
+Processing chromatin associated RNA-DNA interactions followed by paired-end-tag sequencing (ChRD-PET) data <br/>
+This pipeline consists of three scripts. <br/>
+- run.sh: 
+    1 : Splitting data into DNA and RNA data.
+    2 : DNA data alignment to the genome by bwa. RNA data alignment to the genome by hisat2 and bowtie2.
+    3 : Extracting the uniq aligned reads.
+- run.coverage.sh: 
+    1 : Convert bam file to BigWig file.
+    2 : Generate some profile result.
+- run.interaction.sh:
+    1 : Merge DNA-RNA interaction according to read ID
+    2 : Extraction of high-confidence DNA-RNA interactions using hypergeometric distribution test
 
 REQUIREMENTS
 ============
@@ -10,7 +20,7 @@ REQUIREMENTS
 4) R
 
 1) samtools
-2) bowtie2
+2) bowtie2 (bowtie2.2 best)
 3) hisat2
 4) bwa
 5) [flash](http://ccb.jhu.edu/software/FLASH/)
