@@ -53,11 +53,16 @@ bash run.interaction.sh
 Output files
 ============
 ```
+run.sh result:
 *.DNA.fastq # the DNA reads
 *.RNA.fastq # the RNA reads
 *.DNA.bam # the DNA reads align result
 *.RNA.bam # the RNA reads align result
+
+run.coverage.sh result: 
 *.bw # visualization in IGV 
+
+run.interaction.sh result: 
 *.DNARNA.givenanchor.FDRfiltered.txt # interaction. visualization in IGV 
 ```
 
