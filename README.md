@@ -1,5 +1,6 @@
-# ChRDPETpipline
-Process ChRD-PET data
+# ChRDPETpipeline
+Processing ChRD-PET data <br/>
+The pipeline
 
 REQUIREMENTS
 ============
@@ -31,7 +32,7 @@ perl -F"\t" -lane 'if($F[2] eq "gene"){$gene=$1 if($F[8]=~/gene_id "(.+?)";/);$t
 grep -v ">" genome.fa | perl -lane '{$_=~s/[Nn]+//g;$sum+=length($_);}END{print $sum;}' # genome length
 ```
 
-Usage of ChRDPETpipline
+Usage of ChRDPETpipeline
 =======================
 ```
 bash run.sh
