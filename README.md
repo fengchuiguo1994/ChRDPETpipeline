@@ -32,22 +32,40 @@ REQUIREMENTS
 
 Building index
 ==============
+I converted both "Chr" and "ChR0" to "chr" and gff files to gtf files. Added sequences of mitochondria and chloroplasts.
 ```
+wget http://rice.hzau.edu.cn/rice_rs1/download_ext/MH63RS1.LNNK00000000.fsa.tar.gz
+wget http://rice.hzau.edu.cn/rice_rs1/download_ext/MH63_chr.gff.tar.gz
+wget http://rice.hzau.edu.cn/rice_rs1/download_ext/MH63_repeat.gff3.tar.gz
+https://www.ncbi.nlm.nih.gov/nuccore/109156581?tdsourcetag=s_pctim_aiomsg
+https://www.ncbi.nlm.nih.gov/nuccore/89280701
+
 bwa index genome.fa
+grep -v ">" genome.fa | perl -lane '{$_=~s/[Nn]+//g;$sum+=length($_);}END{print $sum;}' # genome length
+
 python hisat2-2.1.0/extract_splice_sites.py genome.gtf > genome.ss
 python hisat2-2.1.0/extract_exons.py genome.gtf > genome.exon
 hisat2-build -p 8 --ss genome.ss --exon genome.exon genome.fa genome
 bowtie2-build --threads 8 genome.fa genome
+
 perl -F"\t" -lane 'if($F[2] eq "gene"){$gene=$1 if($F[8]=~/gene_id "(.+?)";/);$type="coding";$name=$gene;print "$F[0]\t".($F[3]-1)."\t$F[4]\t$name\t0\t$F[6]\t$gene\t$type"}' genome.gtf > genome.info
-grep -v ">" genome.fa | perl -lane '{$_=~s/[Nn]+//g;$sum+=length($_);}END{print $sum;}' # genome length
+or
+perl -lane 'if($F[2] eq "gene"){$tmp=(split(/;/,$F[8]))[0];$gene=(split(/=/,$tmp))[1];print "$F[0]\t".($F[3]-1)."\t$F[4]\t$gene\t.\t$F[6]"}' genome.gff3 | awk '{print $0"\t"$4"\coding"}' > genome.info
+
+get rrna region: 
+    1: get rrna region from MH63_repeat.gff3.tar.gz file (grep "rRNA").
+    2: get rrna region from MH63_chr.gff.tar.gz file (grep "ribosomal protein")
 ```
 
 Usage of ChRDPETpipeline
 =======================
 ```
 bash run.sh
+# mv outfile.DNA.bam outfile.DNA.old.bam && intersectBed -a outfile.DNA.old.bam -b all.rrna.region.bed -v > outfile.DNA.bam
+# mv outfile.RNA.bam outfile.RNA.old.bam && intersectBed -a outfile.RNA.old.bam -b all.rrna.region.bed -v > outfile.RNA.bam
 bash run.coverage.sh
 bash run.interaction.sh
+# If your annotation file is in gff format. Please rewrite  "-i gene_id" to "-i ID" in run.interaction.sh file.
 ```
 
 Output files
@@ -60,7 +78,8 @@ run.sh result:
 *.RNA.bam # the RNA reads align result
 
 run.coverage.sh result: 
-*.bw # visualization in IGV 
+*.bw # visualization in IGV
+*.RNA.sense.richheatmap.cg.pdf # Just a quick look at, a few regions that need to be eliminated with unusually high expression
 
 run.interaction.sh result: 
 *.DNARNA.givenanchor.FDRfiltered.txt # interaction. visualization in IGV 
