@@ -32,13 +32,11 @@ REQUIREMENTS
 
 Building index
 ==============
-I converted both "Chr" and "ChR0" to "chr" and gff files to gtf files. Added sequences of mitochondria and chloroplasts.
+I converted both "Chr" and "ChR0" to "chr" and gff files to gtf files.
 ```
 wget http://rice.hzau.edu.cn/rice_rs1/download_ext/MH63RS1.LNNK00000000.fsa.tar.gz
 wget http://rice.hzau.edu.cn/rice_rs1/download_ext/MH63_chr.gff.tar.gz
 wget http://rice.hzau.edu.cn/rice_rs1/download_ext/MH63_repeat.gff3.tar.gz
-https://www.ncbi.nlm.nih.gov/nuccore/109156581?tdsourcetag=s_pctim_aiomsg
-https://www.ncbi.nlm.nih.gov/nuccore/89280701
 
 bwa index genome.fa
 grep -v ">" genome.fa | perl -lane '{$_=~s/[Nn]+//g;$sum+=length($_);}END{print $sum;}' # genome length
