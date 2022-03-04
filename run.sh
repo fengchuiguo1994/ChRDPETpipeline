@@ -26,7 +26,7 @@ function jobmax
 start=`date '+%s.%N'`
 time=`date '+%s.%N'`
 echo flash start :  `date`
-flash --threads $NTHREADS -M 145 --output-prefix $OUTPUT_PREFIX.flash --output-directory $OUTPUT_DIRECTORY $IN1 $IN2
+flash --threads $NTHREADS -M 145 -O --output-prefix $OUTPUT_PREFIX.flash --output-directory $OUTPUT_DIRECTORY $IN1 $IN2
 echo flash finish : `date`
 dur=`echo "$(date +%s.%N) - $time" | bc`
 printf "Execution time for flash : %.6f seconds\n" $dur
