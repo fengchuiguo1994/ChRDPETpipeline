@@ -51,8 +51,7 @@ or
 perl -lane 'if($F[2] eq "gene"){$tmp=(split(/;/,$F[8]))[0];$gene=(split(/=/,$tmp))[1];print "$F[0]\t".($F[3]-1)."\t$F[4]\t$gene\t.\t$F[6]"}' genome.gff3 | awk '{print $0"\t"$4"\coding"}' > genome.info
 
 get rrna region: 
-    1: get rrna region from MH63_repeat.gff3.tar.gz file (grep "rRNA").
-    2: get rrna region from MH63_chr.gff.tar.gz file (grep "ribosomal protein")
+    get rrna region from MH63_repeat.gff3.tar.gz file (grep "rRNA").
 ```
 
 Usage of ChRDPETpipeline
