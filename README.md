@@ -48,7 +48,7 @@ bowtie2-build --threads 8 genome.fa genome
 
 perl -F"\t" -lane 'if($F[2] eq "gene"){$gene=$1 if($F[8]=~/gene_id "(.+?)";/);$type="coding";$name=$gene;print "$F[0]\t".($F[3]-1)."\t$F[4]\t$name\t0\t$F[6]\t$gene\t$type"}' genome.gtf > genome.info
 or
-perl -lane 'if($F[2] eq "gene"){$tmp=(split(/;/,$F[8]))[0];$gene=(split(/=/,$tmp))[1];print "$F[0]\t".($F[3]-1)."\t$F[4]\t$gene\t.\t$F[6]"}' genome.gff3 | awk '{print $0"\t"$4"\coding"}' > genome.info
+perl -lane 'if($F[2] eq "gene"){$tmp=(split(/;/,$F[8]))[0];$gene=(split(/=/,$tmp))[1];print "$F[0]\t".($F[3]-1)."\t$F[4]\t$gene\t.\t$F[6]"}' genome.gff3 | awk '{print $0"\t"$4"\tcoding"}' > genome.info
 
 get rrna region: 
     get rrna region from MH63_repeat.gff3.tar.gz file (grep "rRNA").
