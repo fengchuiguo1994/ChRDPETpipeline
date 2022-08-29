@@ -23,6 +23,8 @@ function jobmax
 time=`date '+%s.%N'`
 mkdir -p $OUTPUT_DIRECTORY/coverage
 tmpdir=$OUTPUT_DIRECTORY/coverage
+samtools index $OUTPUT_DIRECTORY/$OUTPUT_PREFIX.DNA.bam
+samtools index $OUTPUT_DIRECTORY/$OUTPUT_PREFIX.RNA.bam
 bamCoverage -o $tmpdir/$OUTPUT_PREFIX.DNA.bw --binSize 5 -b $OUTPUT_DIRECTORY/$OUTPUT_PREFIX.DNA.bam --numberOfProcessors $NTHREADS --minMappingQuality $MAPPING_CUTOFF
 bamCoverage -o $tmpdir/$OUTPUT_PREFIX.RNA.bw --binSize 5 -b $OUTPUT_DIRECTORY/$OUTPUT_PREFIX.RNA.bam --numberOfProcessors $NTHREADS --minMappingQuality $MAPPING_CUTOFF
 bamCoverage -o $tmpdir/$OUTPUT_PREFIX.DNA.1x.bw --binSize 5 -b $OUTPUT_DIRECTORY/$OUTPUT_PREFIX.DNA.bam --numberOfProcessors $NTHREADS --minMappingQuality $MAPPING_CUTOFF --normalizeUsing RPGC --effectiveGenomeSize $GENOME_LEN
